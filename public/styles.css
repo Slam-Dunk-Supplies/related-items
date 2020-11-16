@@ -1,0 +1,10 @@
+#container {
+    height: 295.25PX;
+    width: 176.25PX;
+    background-color: black;
+
+}
+#picture{
+    height: 164.25PX;
+    max-width: 164.25PX;
+}

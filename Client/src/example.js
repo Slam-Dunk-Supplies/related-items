@@ -1,7 +1,6 @@
 export default [
     {
         id: 1,
-        endpoint: '',
         price: 8,
         title: 'Football',
         description: 'look at this cool Football',
@@ -10,7 +9,6 @@ export default [
     },
     {
         id: 2,
-        endpoint: '',
         price: 8,
         title: 'Basketball',
         description: 'look at this cool basketball',
@@ -19,7 +17,6 @@ export default [
     },
     {
         id: 1,
-        endpoint: '',
         price: 8,
         title: 'Shoe',
         description: 'look at this cool shoe',
@@ -28,7 +25,6 @@ export default [
     },
     {
         id: 1,
-        endpoint: '',
         price: 8,
         title: 'Jacket',
         description: 'look at this cool jacket',

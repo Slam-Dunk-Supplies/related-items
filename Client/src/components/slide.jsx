@@ -11,8 +11,10 @@ class Slide extends React.Component {
         return (
 
             <div id='container'>
+                <div id='picture'>
+                    <img src={this.state.products.image} />
+                </div>
                 <h1>{this.state.products.title} ${this.state.products.price}</h1>
-                <img src={this.state.products.image} />
                 <p>{this.state.products.description} </p>
             </div>
         )
