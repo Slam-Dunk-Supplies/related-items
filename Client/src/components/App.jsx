@@ -1,46 +1,60 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import example from '../example.js';
 import Slide from './slide.jsx';
+import Arrow from './Arrow.jsx';
 
 
+function App() {
+    const [products, setProducts] = useState([]);
+    const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
-export default class App extends React.Component {
-    constructor(props) {
-        super(props);
+    useEffect(() => {
+        fetchProducts()
+    });
 
-        this.state = {
-            products: example
-        }
-
-    }
-
-
-    componentDidMount() {
-        this.fetchProducts()
-    }
-
-    fetchProducts() {
+    const fetchProducts = () => {
         axios.get('/data')
             .then(({ data }) => {
-                this.setState({
-                    products: data
-                })
+                setProducts(data);
             })
-    }
+    };
 
-    render() {
-        return (
-            <div>
-                {console.log('from within return', this.state.products.length)}
-                {this.state.products.length > 5 &&
-                    <Slide products={this.state.products[0]} />
-                }
-                {this.state.products.length > 5 &&
-                    <Slide products={this.state.products[1]} />
-                }
+    const nextSlide = () => {
+        if (currentSlideIndex===96 ) {
+            setCurrentSlideIndex(0)
+        } else {
+        setCurrentSlideIndex(currentSlideIndex + 4);
+        }
+    };
 
-            </div>
-        )
-    }
+    const previousSlide = () => {
+        if (currentSlideIndex === 0) {
+            setCurrentSlideIndex(96);
+        } else {
+        setCurrentSlideIndex(currentSlideIndex - 4);
+        }
+    };
+
+    return (
+        <div className='carousel'>
+            <Arrow
+                direction="left"
+                clickFunction={previousSlide}
+                glyph="&#9664;" />
+            {products.length !== 0 &&
+                [<Slide products={products[currentSlideIndex]} />,
+                <Slide products={products[currentSlideIndex + 1]} />,
+                <Slide products={products[currentSlideIndex + 2]} />,
+                <Slide products={products[currentSlideIndex + 3]} />
+                ]
+            }
+            < Arrow
+                direction="right"
+                clickFunction={nextSlide}
+                glyph="&#9654;" />
+        </div>
+    )
 }
+
+
+export default App;
