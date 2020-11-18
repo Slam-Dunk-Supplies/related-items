@@ -1,0 +1,21 @@
+#container {
+    height: 295.25PX;
+    width: 176.25PX;
+    padding: 5PX;
+}
+#picture{
+    max-width: 100%;
+    max-height: 100%;
+}
+#description{
+    height: 131.25PX;
+    width: 176.25PX;
+}
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.carousel{
+    display:flex; flex-direction:row;
+}
