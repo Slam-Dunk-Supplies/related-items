@@ -1,14 +1,16 @@
+const { image } = require('faker');
 var faker = require('faker');
 var db = require('./database/index.js');
 var products = []
+var imageFilePath = 'https://ghrsea13-group2-fec.s3-us-west-2.amazonaws.com/'
 
-for (var i = 0; i < 10; i++) {
+for (var i = 0; i < 100; i++) {
     var product = {
         title: faker.commerce.productName(),
         price: faker.commerce.price(),
         description: faker.commerce.productDescription(),
         category: faker.commerce.department(),
-        image: faker.image.sports()
+        image: imageFilePath+i+'.jpg'
     }
     products.push(product)
    

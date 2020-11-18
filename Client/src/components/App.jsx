@@ -3,8 +3,9 @@ import axios from 'axios';
 import Slide from './slide.jsx';
 import Arrow from './Arrow.jsx';
 
-
 function App() {
+    const MAX_NUM_SLIDES = 12;
+    const NUM_IMAGES_TO_SHIFT = 4;
     const [products, setProducts] = useState([]);
     const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
@@ -20,18 +21,18 @@ function App() {
     };
 
     const nextSlide = () => {
-        if (currentSlideIndex===96 ) {
+        if (currentSlideIndex === MAX_NUM_SLIDES) {
             setCurrentSlideIndex(0)
         } else {
-        setCurrentSlideIndex(currentSlideIndex + 4);
+            setCurrentSlideIndex(currentSlideIndex + NUM_IMAGES_TO_SHIFT);
         }
     };
 
     const previousSlide = () => {
         if (currentSlideIndex === 0) {
-            setCurrentSlideIndex(96);
+            setCurrentSlideIndex(MAX_NUM_SLIDES);
         } else {
-        setCurrentSlideIndex(currentSlideIndex - 4);
+            setCurrentSlideIndex(currentSlideIndex - NUM_IMAGES_TO_SHIFT);
         }
     };
 

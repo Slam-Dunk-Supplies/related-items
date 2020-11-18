@@ -2,7 +2,8 @@
   "name": "ghrsea13-group2-FEC",
   "jest": {
     "setupFilesAfterEnv": [
-      "<rootDir>/test.js"
+      "./__tests__/server_test.js",
+      "./__tests__/client_test.js"
     ],
     "verbose": true
   },
