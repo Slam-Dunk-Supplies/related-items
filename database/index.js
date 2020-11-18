@@ -16,7 +16,7 @@ const getAllProducts = function (callback) {
 
 const postAllProducts = function (product, callback) {
   const params = [product.title, product.price, product.description, product.category, product.image]
-  var query = `INSERT INTO products (title, price, description, category, image) VALUES ('${params}')`
+  var query = `INSERT INTO products (title, price, description, category, image) VALUES (?, ?, ?, ?, ?)`
   connection.query(query, function (err, results) {
     if (err) {
       console.log(err)
