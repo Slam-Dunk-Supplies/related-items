@@ -4,7 +4,7 @@ var db = require('./database/index.js');
 var products = []
 var imageFilePath = 'https://ghrsea13-group2-fec.s3-us-west-2.amazonaws.com/'
 
-for (var i = 0; i < 100; i++) {
+for (var i = 0; i < 99; i++) {
     var product = {
         title: faker.commerce.productName(),
         price: faker.commerce.price(),

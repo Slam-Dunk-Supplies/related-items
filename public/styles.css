@@ -1,8 +1,16 @@
-#container {
+.container {
     height: 295.25PX;
     width: 176.25PX;
-    padding: 5PX;
+    margin-left: 5PX;
+    margin-right: 5PX;
+    margin-top: 0px;
+
 }
+
+.container:hover {
+    border: 1PX solid black;
+}
+
 #picture{
     max-width: 100%;
     max-height: 100%;
@@ -15,7 +23,62 @@ img {
     max-width: 100%;
     max-height: 100%;
 }
+#category{
+    color: grey;
+    margin-top: 10PX;
+    margin-bottom: 10PX;
+}
 
 .carousel{
-    display:flex; flex-direction:row;
+    display:flex; 
+    flex-direction:row;
+}
+#slide-arrow-right{
+    height: 25px;
+    width: 25px;
+    border-radius: 0px;
+    opacity: 0.5;
+    background-color: white;
+    border: none;
+    z-index: 1;
+    vertical-align: middle;
+    right: 30PX;
+    outline:none;
+    font-size: 25px;
+    text-align: center;
+}
+#slide-arrow-left{
+    height: 25px;
+    width: 25px;
+    border-radius: 0px;
+    opacity: 0.5;
+    background-color: white;
+    border: none;
+    z-index: 1;
+    left:30px;    
+    outline:none;
+    font-size: 25px;
+    text-align: center;
+
+}
+#slide-arrow-right:hover {
+    background-color: black;
+    opacity: 1;
+    color: white
+}
+
+#slide-arrow-left:hover {
+    background-color: black;
+    opacity: 1;
+    color: white
+}
+
+.vertical-center {
+    position: relative;
+    top: 50%;
+}
+
+#toggleBar{
+    position: relative;
+    left: 25%;
 }

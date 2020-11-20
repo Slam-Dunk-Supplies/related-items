@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Slide from './slide.jsx';
+import Slide from './Slide.jsx';
 import Arrow from './Arrow.jsx';
+import ToggleBar from './ToggleBar.jsx';
+
 
 function App() {
     const MAX_NUM_SLIDES = 12;
@@ -36,24 +38,52 @@ function App() {
         }
     };
 
-    return (
-        <div className='carousel'>
-            <Arrow
-                direction="left"
-                clickFunction={previousSlide}
-                glyph="&#9664;" />
-            {products.length !== 0 &&
-                [<Slide products={products[currentSlideIndex]} />,
+    const toggle = (slideNum) => {
+        setCurrentSlideIndex(slideNum)
+    }
+
+    const slides = () => (
+        <>
+            {products.length !== 0 && [
+                <Slide products={products[currentSlideIndex]} />,
                 <Slide products={products[currentSlideIndex + 1]} />,
                 <Slide products={products[currentSlideIndex + 2]} />,
-                <Slide products={products[currentSlideIndex + 3]} />
-                ]
+                <Slide products={products[currentSlideIndex + 3]} />,
+            ]
             }
-            < Arrow
-                direction="right"
-                clickFunction={nextSlide}
-                glyph="&#9654;" />
-        </div>
+        </>
+    );
+
+    const toggleBar = () => (
+        <>
+            <ToggleBar buttonName={'firstToggleBtn'} toggle={toggle} slideNum={0} />
+            <ToggleBar buttonName={'secondToggleBtn'} toggle={toggle} slideNum={4} />
+            <ToggleBar buttonName={'thirdToggleBtn'} toggle={toggle} slideNum={8} />
+            <ToggleBar buttonName={'fourthToggleBtn'} toggle={toggle} slideNum={12} />
+
+        </>
+    );
+
+    return (
+        <>
+            <div id='component'>
+                <div className='carousel'>
+                    <Arrow
+                        direction="left"
+                        clickFunction={previousSlide}
+                        glyph="<" />
+                    {slides()}
+                    < Arrow
+                        direction="right"
+                        clickFunction={nextSlide}
+                        glyph=">" />
+
+                </div>
+                <div id='toggleBar'>
+                    {toggleBar()}
+                </div>
+            </div>
+        </>
     )
 }
 
