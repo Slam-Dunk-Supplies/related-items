@@ -48,7 +48,7 @@ test("Heart button sets heartClicked state", () => {
   const heartButton = wrapper.find('button') 
   const heartClicked = wrapper.find('heartClicked')
   heartButton.simulate('click')
-  expect(heartButton.props('style')).toBeTruthy();
+  expect(heartClicked).toBeTruthy();
 });
 // test("Mouse over and mouse leave changes state", () => {
 //   const mockCallBack = jest.fn();

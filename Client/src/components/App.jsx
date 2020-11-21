@@ -3,6 +3,9 @@ import axios from 'axios';
 import Slide from './Slide.jsx';
 import Arrow from './Arrow.jsx';
 import ToggleBar from './ToggleBar.jsx';
+import ReactCSSTransitionGroup from 'react-transition-group';
+
+
 
 
 function App() {
@@ -38,10 +41,6 @@ function App() {
         }
     };
 
-    const toggle = (slideNum) => {
-        setCurrentSlideIndex(slideNum)
-    }
-
     const slides = () => (
         <>
             {products.length !== 0 && [
@@ -53,13 +52,17 @@ function App() {
             }
         </>
     );
+    const toggle = (slideNum) => {
+        setCurrentSlideIndex(slideNum)
+    }
+
 
     const toggleBar = () => (
         <>
-            <ToggleBar buttonName={'firstToggleBtn'} toggle={toggle} slideNum={0} />
-            <ToggleBar buttonName={'secondToggleBtn'} toggle={toggle} slideNum={4} />
-            <ToggleBar buttonName={'thirdToggleBtn'} toggle={toggle} slideNum={8} />
-            <ToggleBar buttonName={'fourthToggleBtn'} toggle={toggle} slideNum={12} />
+            <ToggleBar currentSlideIndex ={currentSlideIndex} buttonName={'firstToggleBtn'} toggle={toggle} slideNum={0} />
+            <ToggleBar currentSlideIndex ={currentSlideIndex} buttonName={'secondToggleBtn'} toggle={toggle} slideNum={4} />
+            <ToggleBar currentSlideIndex ={currentSlideIndex} buttonName={'thirdToggleBtn'} toggle={toggle} slideNum={8} />
+            <ToggleBar currentSlideIndex ={currentSlideIndex} buttonName={'fourthToggleBtn'} toggle={toggle} slideNum={12} />
 
         </>
     );

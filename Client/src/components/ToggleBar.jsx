@@ -1,28 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function ToggleBar(props) {
 
     const [buttonClicked, setButtonClicked] = useState(false)
     const [clicked, setClicked] = useState(false)
 
-    const clickHandler = () => {
-        if (clicked === false) {
-        setButtonClicked(true)
-        setClicked(true)
+    useEffect(() => {
+        if (props.currentSlideIndex === props.slideNum) {
+            setButtonClicked(true)
+            setClicked(true)
         } else {
-            setButtonClicked(!buttonClicked)
-            setClicked(!clicked)
+            setButtonClicked(false)
+            setClicked(false)
         }
+    })
 
-    };
     const mouseOverHandler = () => {
-        if (buttonClicked!== true) {
-        setButtonClicked(true)
+        if(clicked===false) {
+            setButtonClicked(true)
         }
     }
     const mouseLeaveHandler = () => {
         if (clicked === false) {
-        setButtonClicked(false)
+            setButtonClicked(false)
         }
     }
 
@@ -45,18 +45,18 @@ function ToggleBar(props) {
         'backgroundColor': 'black',
         'outline': 'none'
     }
-    
+
     return (
         <>
             <button id={props.buttonName}
                 style={buttonClicked ? clickedStyle : unclickedStyle}
-                onMouseOver = {mouseOverHandler}
-                onMouseLeave = {mouseLeaveHandler}
+                // onMouseOver={mouseOverHandler}
+                // onMouseLeave={mouseLeaveHandler}
                 onClick={() => {
-                    clickHandler();
+                    // clickHandler();
                     props.toggle(props.slideNum);
                 }}
-                >
+            >
             </button>
         </>
     )
