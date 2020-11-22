@@ -9,7 +9,7 @@
   },
   "version": "1.0.0",
   "description": "",
-  "main": "./build/index.js",
+  "main": "Server/index.js",
   "scripts": {
     "test": "jest",
     "build": "webpack -w",
