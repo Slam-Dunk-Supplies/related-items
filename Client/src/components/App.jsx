@@ -19,7 +19,7 @@ function App() {
     });
 
     const fetchProducts = () => {
-        axios.get('/data')
+        axios.get('/api/data')
             .then(({ data }) => {
                 setProducts(data);
             })
