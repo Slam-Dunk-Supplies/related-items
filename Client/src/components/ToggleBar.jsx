@@ -20,7 +20,9 @@ function ToggleBar(props) {
         'border': 'none',
         'margin': '3PX',
         'backgroundColor': 'black',
-        'outline': 'none'
+        'outline': 'none',
+        display: 'inline-block'
+
     }
 
     const clickedStyle01 = {
@@ -31,7 +33,9 @@ function ToggleBar(props) {
         'border': 'none',
         'margin': '3PX',
         'backgroundColor': 'black',
-        'outline': 'none'
+        'outline': 'none',
+        display: 'inline-block'
+
     }
 
     return (
