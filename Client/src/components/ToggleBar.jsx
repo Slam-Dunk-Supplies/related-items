@@ -2,28 +2,20 @@ import React, { useEffect, useState } from 'react';
 
 function ToggleBar(props) {
 
-    const [buttonClicked, setButtonClicked] = useState(false)
-    const [clicked, setClicked] = useState(false)
-
-    useEffect(() => {
-        if (props.currentSlideIndex === props.slideNum) {
-            setButtonClicked(true)
-            setClicked(true)
-        }
-    })
+    const [hovered, setHovered] = useState(false)
 
     const mouseOverHandler = () => {
-            setButtonClicked(true)
+        setHovered(true)
     }
+
     const mouseLeaveHandler = () => {
-        if (clicked === false) {
-            setButtonClicked(false)
-        }
+        setHovered(false)
     }
 
     const unclickedStyle01 = {
         height: '1PX',
         width: '15PX',
+        padding: '0PX',
         'borderRadius': '0PX',
         'border': 'none',
         'margin': '3PX',
@@ -34,6 +26,7 @@ function ToggleBar(props) {
     const clickedStyle01 = {
         height: '5PX',
         width: '15PX',
+        padding: '0PX',
         'borderRadius': '0PX',
         'border': 'none',
         'margin': '3PX',
@@ -44,7 +37,7 @@ function ToggleBar(props) {
     return (
         <>
             <button
-                style={buttonClicked ? clickedStyle01 : unclickedStyle01}
+                style={props.currentSlideIndex === props.slideNum || hovered ? clickedStyle01 : unclickedStyle01}
                 onMouseOver={mouseOverHandler}
                 onMouseLeave={mouseLeaveHandler}
                 onClick={() => {
