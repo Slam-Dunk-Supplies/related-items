@@ -4,6 +4,7 @@ const port = 3003
 const db = require('../database')
 const bodyParser = require('body-parser')
 
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));

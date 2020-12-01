@@ -3,8 +3,8 @@ import axios from 'axios';
 import Slide from './Slide.jsx';
 import Arrow from './Arrow.jsx';
 import ToggleBar from './ToggleBar.jsx';
-import ReactCSSTransitionGroup from 'react-transition-group';
-
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { CSSTransitionGroup } from 'react-transition-group'
 
 
 
@@ -13,9 +13,12 @@ function App() {
     const NUM_IMAGES_TO_SHIFT = 4;
     const [products, setProducts] = useState([]);
     const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-
+    const [slideTranstionName, setSlideTranstionName] = useState('slideLeft')
     useEffect(() => {
+        if (products.length < 1) {
         fetchProducts()
+        console.log('hello')
+        }
     });
 
     const fetchProducts = () => {
@@ -26,6 +29,7 @@ function App() {
     };
 
     const nextSlide = () => {
+        setSlideTranstionName('slideLeft')
         if (currentSlideIndex === MAX_NUM_SLIDES) {
             setCurrentSlideIndex(0)
         } else {
@@ -34,6 +38,7 @@ function App() {
     };
 
     const previousSlide = () => {
+        setSlideTranstionName('slideRight')
         if (currentSlideIndex === 0) {
             setCurrentSlideIndex(MAX_NUM_SLIDES);
         } else {
@@ -41,28 +46,30 @@ function App() {
         }
     };
 
-    const slides = () => (
-        <>
-            {products.length !== 0 && [
-                <Slide products={products[currentSlideIndex]} />,
-                <Slide products={products[currentSlideIndex + 1]} />,
-                <Slide products={products[currentSlideIndex + 2]} />,
-                <Slide products={products[currentSlideIndex + 3]} />,
-            ]
-            }
-        </>
-    );
+    const slides = () => {
+        if (products.length == 0) {
+            return (<></>)
+        }
+        return (
+            <>
+                <Slide products={products[currentSlideIndex]} key={currentSlideIndex} />
+                <Slide products={products[currentSlideIndex + 1]} key={currentSlideIndex + 1} />
+                <Slide products={products[currentSlideIndex + 2]} key={currentSlideIndex + 2} />
+                <Slide products={products[currentSlideIndex + 3]} key={currentSlideIndex + 3} />
+            </>
+        );
+    }
+
     const toggle = (slideNum) => {
         setCurrentSlideIndex(slideNum)
     }
 
-
     const toggleBar = () => (
         <>
-            <ToggleBar currentSlideIndex ={currentSlideIndex} buttonName={'firstToggleBtn'} toggle={toggle} slideNum={0} />
-            <ToggleBar currentSlideIndex ={currentSlideIndex} buttonName={'secondToggleBtn'} toggle={toggle} slideNum={4} />
-            <ToggleBar currentSlideIndex ={currentSlideIndex} buttonName={'thirdToggleBtn'} toggle={toggle} slideNum={8} />
-            <ToggleBar currentSlideIndex ={currentSlideIndex} buttonName={'fourthToggleBtn'} toggle={toggle} slideNum={12} />
+            <ToggleBar currentSlideIndex={currentSlideIndex} toggle={toggle} slideNum={0} />
+            <ToggleBar currentSlideIndex={currentSlideIndex} toggle={toggle} slideNum={4} />
+            <ToggleBar currentSlideIndex={currentSlideIndex} toggle={toggle} slideNum={8} />
+            <ToggleBar currentSlideIndex={currentSlideIndex} toggle={toggle} slideNum={12} />
 
         </>
     );
@@ -70,18 +77,24 @@ function App() {
     return (
         <>
             <div id='component'>
-                <div className='carousel'>
-                    <Arrow
-                        direction="left"
-                        clickFunction={previousSlide}
-                        glyph="<" />
-                    {slides()}
-                    < Arrow
-                        direction="right"
-                        clickFunction={nextSlide}
-                        glyph=">" />
+                <CSSTransitionGroup
+                    transitionName={slideTranstionName}
+                    transitionEnterTimeout={500}
+                    transitionLeaveTimeout={300}
+                    component = 'div'>
+                    <div className='carousel' key={currentSlideIndex}>
+                        <Arrow
+                            direction="left"
+                            clickFunction={previousSlide}
+                            glyph="<" />
+                        {slides()}
+                        <Arrow
+                            direction="right"
+                            clickFunction={nextSlide}
+                            glyph=">" />
 
-                </div>
+                    </div>
+                </CSSTransitionGroup>
                 <div id='toggleBar'>
                     {toggleBar()}
                 </div>
