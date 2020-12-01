@@ -4,16 +4,15 @@
     margin-left: 5PX;
     margin-right: 5PX;
     margin-top: 0px;
-
+    position: relative;
 }
-
 .container:hover {
-    border: 1PX solid black;
+    outline: 1px solid black;
 }
 
 #picture{
-    max-width: 100%;
-    max-height: 100%;
+    width: 176.25PX;
+    height: 176.25PX;
 }
 #description{
     height: 131.25PX;
@@ -25,13 +24,29 @@ img {
 }
 #category{
     color: grey;
+    margin-bottom: 10PX;
+    margin-left:10px;
+}
+#title {
+    margin-left: 10px;
+}
+#price {
+    margin-left: 10px;
+}
+#category{
+    color: grey;
     margin-top: 10PX;
     margin-bottom: 10PX;
 }
-
+#component {
+    max-width: 10px;
+    overflow: hidden;
+}
 .carousel{
+    max-width: 100%;
     display:flex; 
     flex-direction:row;
+    position: absolute;
 }
 #slide-arrow-right{
     height: 25px;
@@ -72,31 +87,42 @@ img {
     opacity: 1;
     color: white
 }
-#firstToggleBtn:hover {
-    height: 10PX,
-}
 .vertical-center {
     position: relative;
     top: 50%;
 }
 #toggleBar{
-    position: relative;
-    left: 25%;
+    position: absolute;
+    top: 39%;
+    left: 50%;
 }
-.example-enter {
-    opacity: 0.01;
+.slideLeft-enter {
+    transform: translateX(100%);
   }
-  
-  .example-enter.example-enter-active {
-    opacity: 1;
-    transition: opacity 500ms ease-in;
+  .slideLeft-enter-active {
+    transform: translateX(0%);
+    transition: transform 500ms ease-in-out;
   }
-  
-  .example-leave {
-    opacity: 1;
+  .slideLeft-leave {
+    transform: translateX(-0%);
+
   }
-  
-  .example-leave.example-leave-active {
-    opacity: 0.01;
-    transition: opacity 300ms ease-in;
+  .slideLeft-leave-active {
+    transform: translateX(-100%);
+    transition: transform 300ms ease-in-out;
+
   }
+  .slideRight-enter {
+    transform: translateX(-100%);
+  }
+  .slideRight-enter-active {
+    transform: translateX(0%);
+    transition: transform 500ms ease-in-out;
+  }
+  .slideRight-leave {
+    transform: translateX(0%);
+  }
+  .slideRight-leave-active {
+    transform: translateX(100%);
+    transition: transform 300ms ease-in-out;
+}

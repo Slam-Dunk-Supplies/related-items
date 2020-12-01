@@ -9,16 +9,11 @@ function ToggleBar(props) {
         if (props.currentSlideIndex === props.slideNum) {
             setButtonClicked(true)
             setClicked(true)
-        } else {
-            setButtonClicked(false)
-            setClicked(false)
         }
     })
 
     const mouseOverHandler = () => {
-        if(clicked===false) {
             setButtonClicked(true)
-        }
     }
     const mouseLeaveHandler = () => {
         if (clicked === false) {
@@ -26,20 +21,20 @@ function ToggleBar(props) {
         }
     }
 
-    const unclickedStyle = {
+    const unclickedStyle01 = {
         height: '1PX',
         width: '15PX',
-        'border-radius': '0PX',
+        'borderRadius': '0PX',
         'border': 'none',
         'margin': '3PX',
         'backgroundColor': 'black',
         'outline': 'none'
     }
 
-    const clickedStyle = {
+    const clickedStyle01 = {
         height: '5PX',
         width: '15PX',
-        'border-radius': '0PX',
+        'borderRadius': '0PX',
         'border': 'none',
         'margin': '3PX',
         'backgroundColor': 'black',
@@ -48,12 +43,11 @@ function ToggleBar(props) {
 
     return (
         <>
-            <button id={props.buttonName}
-                style={buttonClicked ? clickedStyle : unclickedStyle}
-                // onMouseOver={mouseOverHandler}
-                // onMouseLeave={mouseLeaveHandler}
+            <button
+                style={buttonClicked ? clickedStyle01 : unclickedStyle01}
+                onMouseOver={mouseOverHandler}
+                onMouseLeave={mouseLeaveHandler}
                 onClick={() => {
-                    // clickHandler();
                     props.toggle(props.slideNum);
                 }}
             >
