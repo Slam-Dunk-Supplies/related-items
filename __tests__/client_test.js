@@ -55,11 +55,9 @@ test("Heart button sets heartClicked state", () => {
 //   const wrapper = mount((<ToggleBar toggle={mockCallBack} />));  
 //   const toggleButton = wrapper.find('button')
 //   toggleButton.simulate('mouseOver')
-//   const clickedStyle = wrapper.find('clickedStyle')
-//   expect(toggleButton.props('style')).toBe(clickedStyle);
-//   // toggleButton.simulate('mouseLeave')
-//   // const buttonleft = wrapper.find('buttonClicked')
-//   // expect(buttonleft).toBeFalsy();
+//   expect(toggleButton.props('props')).toBe({"style": {"height": "5PX"}})
+//   toggleButton.simulate('mouseLeave')
+//   expect(toggleButton.props('props')).toBe({"style": {"height": "1PX"}})
 // });
 
 // test('should invoke fetchProducts on useEffect', () => {

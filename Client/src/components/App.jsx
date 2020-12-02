@@ -3,7 +3,6 @@ import axios from 'axios';
 import Slide from './Slide.jsx';
 import Arrow from './Arrow.jsx';
 import ToggleBar from './ToggleBar.jsx';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { CSSTransitionGroup } from 'react-transition-group'
 
 

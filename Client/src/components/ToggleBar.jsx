@@ -12,36 +12,17 @@ function ToggleBar(props) {
         setHovered(false)
     }
 
-    const unclickedStyle01 = {
-        height: '1PX',
-        width: '15PX',
-        padding: '0PX',
-        'borderRadius': '0PX',
-        'border': 'none',
-        'margin': '3PX',
-        'backgroundColor': 'black',
-        'outline': 'none',
-        display: 'inline-block'
-
-    }
-
-    const clickedStyle01 = {
-        height: '5PX',
-        width: '15PX',
-        padding: '0PX',
-        'borderRadius': '0PX',
-        'border': 'none',
-        'margin': '3PX',
-        'backgroundColor': 'black',
-        'outline': 'none',
-        display: 'inline-block'
-
+    const clickedStyle = (pixel) => {
+        return {
+            height: pixel
+        }
     }
 
     return (
         <>
             <button
-                style={props.currentSlideIndex === props.slideNum || hovered ? clickedStyle01 : unclickedStyle01}
+                className="toggle-bar-button"
+                style={props.currentSlideIndex === props.slideNum || hovered ? clickedStyle('5PX') : clickedStyle('1PX')}
                 onMouseOver={mouseOverHandler}
                 onMouseLeave={mouseLeaveHandler}
                 onClick={() => {
