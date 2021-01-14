@@ -6,7 +6,8 @@ Slam Dunk Supplies was a collaborative effort between myself and three other eng
 ### Component Screenshot
 ![Alt text](/FEC%20Related%20Items.png?raw=true)
 #### Installation
-npm install  
+npm install
+Populate MySQL and S3 appropriately
 npm run build  
 npm start  
 ##### License
